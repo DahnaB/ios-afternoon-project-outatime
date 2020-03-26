@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/Dahna/Documents/DevelopmentiOS16/ios-afternoon-project-outatime/OutaTime/OutaTime/digital-7.ttf">
+   </FileRef>
+   <FileRef
+      location = "self:OutaTime.xcodeproj">
+   </FileRef>
+</Workspace>
