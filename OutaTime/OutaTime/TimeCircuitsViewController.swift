@@ -21,36 +21,30 @@ class TimeCircuitsViewController: UIViewController {
     }
     
     @IBAction func travelBackButtonTapped(_ sender: UIButton) {
-        func startTimer() {
-        }
+        startTimer()
     }
     
     var currentSpeed = 0
     private var timer: Timer?
     
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSpeed), userInfo: nil, repeats: true)
-        
-        if currentSpeed == 88 {
-            resetTimer()
-        }
-        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.10, repeats: true, block: updateSpeed(timer:))
+         
     }
     
-    
-    
- 
-    @ objc func updateSpeed() {
-       currentSpeed = 0
+    func updateSpeed(timer: Timer) {
         
         if currentSpeed < 88 {
             currentSpeed += 1
-            speedText.text = String(currentSpeed)
+            speedText.text = "\(currentSpeed) MPH"
         
-        } else if currentSpeed >= 88 {
+        } else {
+//            resetTimer()
             lastTimeText.text = presentTimeText.text
             presentTimeText.text = destinationLabel.text
             currentSpeed = 0
+            speedText.text = "\(currentSpeed) MPH"
+            resetTimer()
             showAlert()
         }
     }
@@ -62,7 +56,7 @@ class TimeCircuitsViewController: UIViewController {
     }
    
     private func showAlert() {
-        let alert = UIAlertController(title: "Time Travel Successful", message: "Your new date is \(String(describing: presentTimeText.text))", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Time Travel Successful", message: "Your new date is \(presentTimeText.text!))", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
